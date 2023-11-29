@@ -1,0 +1,105 @@
+{
+    "manifest": {
+        "time": "2023-11-23T17:50:36.1054308-06:00",
+        "magic": "1c7bee3f57c8d621757e12febf05da234085ddfd4ef5c94d61087118355865f9",
+        "version": "v3.94.2"
+    },
+    "config": {
+        "aws:region": "us-east-1"
+    },
+    "resourcePlans": {
+        "urn:pulumi:dev::quickstart::aws:s3/bucket:Bucket::my-bucket": {
+            "goal": {
+                "type": "aws:s3/bucket:Bucket",
+                "name": "my-bucket",
+                "custom": true,
+                "inputDiff": {},
+                "outputDiff": {},
+                "parent": "urn:pulumi:dev::quickstart::pulumi:pulumi:Stack::quickstart-dev",
+                "protect": false,
+                "provider": "urn:pulumi:dev::quickstart::pulumi:providers:aws::default_6_10_0::92b3c6b7-7cf9-43ed-996f-2db964a25874",
+                "additionalSecretOutputs": [
+                    "tagsAll"
+                ],
+                "customTimeouts": {}
+            },
+            "steps": [
+                "same"
+            ],
+            "state": {
+                "accelerationStatus": "",
+                "acl": "private",
+                "arn": "arn:aws:s3:::my-bucket-eedfdb3",
+                "bucket": "my-bucket-eedfdb3",
+                "bucketDomainName": "my-bucket-eedfdb3.s3.amazonaws.com",
+                "bucketRegionalDomainName": "my-bucket-eedfdb3.s3.amazonaws.com",
+                "corsRules": [],
+                "forceDestroy": false,
+                "grants": [],
+                "hostedZoneId": "Z3AQBSTGFYJSTF",
+                "id": "my-bucket-eedfdb3",
+                "lifecycleRules": [],
+                "loggings": [],
+                "objectLockConfiguration": null,
+                "region": "us-east-1",
+                "replicationConfiguration": null,
+                "requestPayer": "BucketOwner",
+                "serverSideEncryptionConfiguration": {
+                    "rule": {
+                        "applyServerSideEncryptionByDefault": {
+                            "kmsMasterKeyId": "",
+                            "sseAlgorithm": "AES256"
+                        },
+                        "bucketKeyEnabled": false
+                    }
+                },
+                "versioning": {
+                    "enabled": false,
+                    "mfaDelete": false
+                },
+                "website": null
+            },
+            "seed": "ZUcBS9zY/K7R3AvZs4CCwSO9kAsOWyoZfb4/6vq3l90="
+        },
+        "urn:pulumi:dev::quickstart::pulumi:providers:aws::default_6_10_0": {
+            "goal": {
+                "type": "pulumi:providers:aws",
+                "name": "default_6_10_0",
+                "custom": true,
+                "inputDiff": {},
+                "outputDiff": {},
+                "protect": false,
+                "customTimeouts": {}
+            },
+            "steps": [
+                "same"
+            ],
+            "state": {
+                "region": "us-east-1",
+                "skipCredentialsValidation": "false",
+                "skipMetadataApiCheck": "true",
+                "skipRegionValidation": "true",
+                "version": "6.10.0"
+            },
+            "seed": "6GvOsVLws58XnFsTJKV/eK172IijaG5XhDP1JA9Y12s="
+        },
+        "urn:pulumi:dev::quickstart::pulumi:pulumi:Stack::quickstart-dev": {
+            "goal": {
+                "type": "pulumi:pulumi:Stack",
+                "name": "quickstart-dev",
+                "custom": false,
+                "inputDiff": {},
+                "outputDiff": {},
+                "protect": false,
+                "customTimeouts": {}
+            },
+            "steps": [
+                "same"
+            ],
+            "state": {
+                "bucket_name": "my-bucket-eedfdb3"
+            },
+            "seed": "gEs4v54ykunM0pLNsmH+vgYtCFRN6jvfUZsrlZAJD0A="
+        }
+    }
+}

@@ -2,6 +2,7 @@ from typing import Mapping, Optional, Sequence
 import pulumi
 import pulumi_aws as aws
 from pulumi import ComponentResource, ResourceOptions
+from pulumi_aws.rds import AwaitableGetSubnetGroupResult
 
 class SubnetGroupArgs:
     def __init__(self,
@@ -11,11 +12,11 @@ class SubnetGroupArgs:
                 # resource_name: str, # Generalmente se crea el nombre del rucurso con los primeros parámetros
                 cloudbuddies: str = "True",
                 department: str = "nonprod",
-                opts: Optional[ResourceOptions] = None,
                 description: Optional[str] = None,
                 name: Optional[str] = None,
                 name_prefix: Optional[str] = None,
                 subnet_ids: Optional[Sequence[str]] = None,
+                opts: Optional[ResourceOptions] = None,
                 tags: Optional[Mapping[str, str]] = None
                 ) -> None:
 
@@ -73,3 +74,28 @@ class SubnetGroupBuild(ComponentResource):
         self.register_outputs({})
 
         
+def get_subnet_group(resource_name: str,
+        id: str,
+        opts: Optional[ResourceOptions] = None,
+        arn: Optional[str] = None,
+        description: Optional[str] = None,
+        name: Optional[str] = None,
+        name_prefix: Optional[str] = None,
+        subnet_ids: Optional[Sequence[str]] = None,
+        supported_network_types: Optional[Sequence[str]] = None,
+        tags: Optional[Mapping[str, str]] = None,
+        tags_all: Optional[Mapping[str, str]] = None,
+        vpc_id: Optional[str] = None) -> AwaitableGetSubnetGroupResult : 
+    
+    return aws.rds.get_subnet_group(
+        id=id,
+        opts= opts,
+        arn= arn,
+        description= description,
+        name= name,
+        name_prefix= name_prefix,
+        subnet_ids= subnet_ids,
+        supported_network_types= supported_network_types,
+        tags= tags,
+        tags_all= tags_all,
+        vpc_id=vpc_id)

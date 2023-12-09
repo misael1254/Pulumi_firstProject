@@ -20,18 +20,18 @@ class SubnetGroupArgs:
                 tags: Optional[Mapping[str, str]] = None
                 ) -> None:
 
-        self.project_name: project_name
-        self.region_short: region_short
-        self.cloudbuddies: cloudbuddies
-        self.department: department
-        self.environment: environment
+        self.project_name = project_name
+        self.region_short = region_short
+        self.cloudbuddies = cloudbuddies
+        self.department = department
+        self.environment = environment
         # self.resource_name: resource_name
-        self.opts: opts
-        self.description: description
-        self.name: name
-        self.name_prefix: name_prefix
-        self.subnet_ids: subnet_ids
-        self.tags: tags
+        self.opts = opts
+        self.description = description
+        self.name = name
+        self.name_prefix = name_prefix
+        self.subnet_ids = subnet_ids
+        self.tags = tags
 
 
 class SubnetGroupBuild(ComponentResource):
@@ -49,7 +49,7 @@ class SubnetGroupBuild(ComponentResource):
         
         # refactorización del if anterior
         if args.name is None:
-            args.name = f"subnetGroup-{args.project_name}-{args.environment}-{args.region_short}"
+            args.name = f"subnetgroup-{args.project_name}-{args.environment}-{args.region_short}"
         
 
         if args.tags is None:
@@ -63,7 +63,7 @@ class SubnetGroupBuild(ComponentResource):
 
         self.subnetGroup = aws.rds.SubnetGroup(
                 args.name,
-                opts = self.opts or ResourceOptions(parent=self),
+                opts = args.opts or ResourceOptions(parent=self),
                 description = args.description,
                 name = args.name,
                 name_prefix = args.name_prefix,

@@ -3,7 +3,9 @@
 import pulumi
 from pulumi_aws import s3
 
-# Create an AWS resource (S3 Bucket)
+from services.aws.templates.create_SubnetGroup_a import createSubnetGroupA
+
+"""# Create an AWS resource (S3 Bucket)
 bucket = s3.Bucket("my-bucket",
     website=s3.BucketWebsiteArgs(
         index_document="index.html",
@@ -41,4 +43,6 @@ bucket_object = s3.BucketObject(
     opts=pulumi.ResourceOptions(depends_on=[public_access_block]),
 )
 
-pulumi.export('bucket_endpoint', pulumi.Output.concat('http://', bucket.website_endpoint))
+pulumi.export('bucket_endpoint', pulumi.Output.concat('http://', bucket.website_endpoint))"""
+
+createSubnetGroupA.pulumi_program()

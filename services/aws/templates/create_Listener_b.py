@@ -9,7 +9,7 @@ from ..resources.alb import(
 
 #from ..resources.region_zone import GetRegionShortAWSNew
 
-class createListenerB:
+class CreateListenerB:
      def pulumi_builder(data_conf: Dict) -> List[Output[object]]:
         
          ### VARS ###
@@ -42,7 +42,7 @@ class createListenerB:
         else:
             listener = getListener(
                 id = listenerArgs["listenerId"],
-                name = "aws listener"
+                resource_name = "aws listener"
             )
         
         export("AWS Listener: ", aws_subnetGroup)

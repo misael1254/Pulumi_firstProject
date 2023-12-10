@@ -1,4 +1,3 @@
-import pulumi
 from pulumi.output import Inputs
 import pulumi_aws as aws
 from pulumi import ComponentResource, ResourceOptions

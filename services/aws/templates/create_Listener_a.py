@@ -1,4 +1,4 @@
-from .create_Listener_b import createListenerB
+from .create_Listener_b import CreateListenerB
 
 class createListenerA:
     def pulumi_program(data: dict = None ) -> None:
@@ -27,4 +27,4 @@ class createListenerA:
         if data is not None:
             data_conf.update(data)
 
-        createListenerB.pulumi_builder(data_conf)
+        CreateListenerB.pulumi_builder(data_conf)

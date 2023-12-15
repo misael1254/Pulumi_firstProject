@@ -4,12 +4,17 @@ from pulumi import ComponentResource, ResourceOptions
 from typing import Mapping, Optional, Sequence
 from pulumi_aws.alb import AwaitableGetListenerResult
 #from ..lb.classListenerDefaultActionArgs import ListenerDefaultActionArgs
-from  pulumi_aws.lb import ListenerDefaultActionArgs 
+from  pulumi_aws.alb import ListenerDefaultActionArgs 
 
 
 
 class ListenerArgs:
     def __init__(self,
+                project_name: str, 
+                region_short: str,
+                environment: str,
+                cloudbuddies: str = "True",
+                department: str = "nonprod",
                 resource_name: str = None,
                 opts: Optional[ResourceOptions] = None,
                 alpn_policy: Optional[str] = None,
@@ -22,6 +27,11 @@ class ListenerArgs:
                 tags: Optional[Mapping[str, str]] = None
                  ) -> None:
         
+        self.project_name = project_name
+        self.region_short = region_short
+        self.cloudbuddies = cloudbuddies
+        self.department = department
+        self.environment = environment
         self.resource_name = resource_name
         self.opts = opts
         self.alpn_policy = alpn_policy
@@ -48,7 +58,7 @@ class ListenerBuild(ComponentResource):
         
         if args.tags is None:
             args.tags = {
-                'Name': args.name,
+                'Name': args.resource_name,
                 'Project': args.project_name,
                 'Department': args.department,
                 'Cloudbuddies Archie': args.cloudbuddies,

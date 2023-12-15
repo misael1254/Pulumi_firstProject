@@ -4,6 +4,9 @@ import pulumi
 from pulumi_aws import s3
 
 from services.aws.templates.create_SubnetGroup_a import createSubnetGroupA
+from services.aws.templates.create_Listener_a import CreateListenerA
+from services.aws.templates.create_TargetGroup_a import CreateTargetGroupA
+from services.aws.templates.create_LoadBalancer_a import CreateLoadBalancerA
 
 """# Create an AWS resource (S3 Bucket)
 bucket = s3.Bucket("my-bucket",
@@ -45,4 +48,5 @@ bucket_object = s3.BucketObject(
 
 pulumi.export('bucket_endpoint', pulumi.Output.concat('http://', bucket.website_endpoint))"""
 
-createSubnetGroupA.pulumi_program()
+#CreateTargetGroupA.pulumi_program()
+CreateLoadBalancerA.pulumi_program()

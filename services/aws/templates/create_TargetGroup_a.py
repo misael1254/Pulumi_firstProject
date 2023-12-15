@@ -20,9 +20,9 @@ class CreateTargetGroupA:
                     "load_balancing_cross_zone_enabled" : None,
                     "name" : None,
                     "name_prefix" : None,
-                    "port" : None,
+                    "port" : 80,#None,
                     "preserve_client_ip" : None,
-                    "protocol" : None,
+                    "protocol" : "HTTP",#None,
                     "protocol_version" : None,
                     "proxy_protocol_v2" : None,
                     "slow_start" : None,
@@ -31,7 +31,8 @@ class CreateTargetGroupA:
                     "target_failovers" : None,
                     "target_health_states" : None,
                     "target_type" : None,
-                    "vpc_id" : None,
+                    "vpc_id" : "vpc-0487e2dbbb0867b92",#None,
+                    "targetGroupId": None,
                 },
             }
 

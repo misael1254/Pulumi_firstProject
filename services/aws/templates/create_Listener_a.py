@@ -1,6 +1,14 @@
 from .create_Listener_b import CreateListenerB
 
-class createListenerA:
+#FOR EXAMPLE PORPUSE
+#import pulumi_aws as aws
+
+#front_end_load_balancer = aws.lb.LoadBalancer("frontEndLoadBalancer")
+# ...
+#front_end_target_group = aws.lb.TargetGroup("frontEndTargetGroup")
+# ...
+
+class CreateListenerA:
     def pulumi_program(data: dict = None ) -> None:
         
         data_conf = {
@@ -14,8 +22,8 @@ class createListenerA:
                 "opts" : None,
                 "alpn_policy" : None,
                 "certificate_arn" : None,
-                "default_actions" : None,
-                "load_balancer_arn" : None,
+                "default_actions": None, #:[aws.lb.ListenerDefaultActionArgs(type="forward",target_group_arn=front_end_target_group.arn,)], #
+                "load_balancer_arn" :None,# front_end_load_balancer.arn,#
                 "port" : None,
                 "protocol" : None,
                 "ssl_policy" : None,

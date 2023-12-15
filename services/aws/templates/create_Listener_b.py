@@ -7,14 +7,14 @@ from ..resources.alb import(
     getListener
 )
 
-#from ..resources.region_zone import GetRegionShortAWSNew
+from ..resources.region_zone import GetRegionShortAWSNew
 
 class CreateListenerB:
      def pulumi_builder(data_conf: Dict) -> List[Output[object]]:
         
          ### VARS ###
         listenerArgs = data_conf["listenerArgs"]
-        #region_short = GetRegionShortAWSNew.get_regionshort(data_conf["region"])
+        region_short = GetRegionShortAWSNew.get_regionshort(data_conf["region"])
 
         ### VARS TO EXPORT ###
         aws_listener = None
@@ -24,20 +24,23 @@ class CreateListenerB:
             listener = ListenerBuild(
                 "aws Listener",
                 ListenerArgs(
-                    resource_name = listenerArgs.resource_name,
-                    opts = listenerArgs.opts,
-                    alpn_policy = listenerArgs.alpn_policy,
-                    certificate_arn = listenerArgs.certificate_arn,
-                    default_actions = listenerArgs.default_actions,
-                    load_balancer_arn = listenerArgs.load_balancer_arn,
-                    port = listenerArgs.port,
-                    protocol = listenerArgs.protocol,
-                    ssl_policy = listenerArgs.ssl_policy,
-                    tags = listenerArgs.tags,
+                    project_name= data_conf["project_name"], 
+                    region_short= region_short,
+                    environment= data_conf["environment"], 
+                    resource_name = listenerArgs["resource_name"],
+                    opts = listenerArgs["opts"],
+                    alpn_policy = listenerArgs["alpn_policy"],
+                    certificate_arn = listenerArgs["certificate_arn"],
+                    default_actions = listenerArgs["default_actions"],
+                    load_balancer_arn = listenerArgs["load_balancer_arn"],
+                    port = listenerArgs["port"],
+                    protocol = listenerArgs["protocol"],
+                    ssl_policy = listenerArgs["ssl_policy"],
+                    tags = listenerArgs["tags"],
                     )
             ).aws_listener
 
-            aws_subnetGroup = Output.format("{0} | {1}", listener.id, listener.arn )
+            aws_listener = Output.format("{0} | {1}", listener.id, listener.arn )
         
         else:
             listener = getListener(
@@ -45,5 +48,5 @@ class CreateListenerB:
                 resource_name = "aws listener"
             )
         
-        export("AWS Listener: ", aws_subnetGroup)
-        return listener, aws_subnetGroup
+        export("AWS Listener: ", aws_listener)
+        return listener, aws_listener

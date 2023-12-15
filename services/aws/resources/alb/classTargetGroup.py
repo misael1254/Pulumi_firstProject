@@ -6,6 +6,11 @@ from pulumi_aws.alb import TargetGroupHealthCheckArgs, TargetGroupStickinessArgs
 
 class TargetGroupArgs():
     def __init__(self,
+            project_name: str, 
+            region_short: str,
+            environment: str,
+            cloudbuddies: str = "True",
+            department: str = "nonprod", 
             #resource_name: str,
             opts: Optional[ResourceOptions] = None,
             connection_termination: Optional[bool] = None,
@@ -31,6 +36,11 @@ class TargetGroupArgs():
             vpc_id: Optional[str] = None
             ) -> None:
         
+        self.project_name = project_name
+        self.region_short = region_short
+        self.cloudbuddies = cloudbuddies
+        self.department = department
+        self.environment = environment
         #self.resource_name = resource_name
         self.opts = opts
         self.connection_termination = connection_termination
@@ -68,7 +78,7 @@ class TargetGroupBuild(ComponentResource):
 
         
         if args.name is None:
-            args.name = f"targetgroup-{args.project_name}-{args.environment}-{args.region_short}"
+            args.name = f"tg-{args.project_name}-{args.environment}-{args.region_short}"
         
         if args.tags is None:
             args.tags = {

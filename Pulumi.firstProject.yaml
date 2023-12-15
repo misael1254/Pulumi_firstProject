@@ -1,4 +1,4 @@
 encryptionsalt: v1:n3q46J3yJg4=:v1:ZEgvJhA8XRXRcIlL:ZII0H1hSbten/V3V5brSjdHf7MXrdQ==
 config:
   aws:profile: sandbox_cloud
-  aws:region: us-east-1
+  aws:region: us-west-2
